@@ -26,5 +26,5 @@ function closePreview() {
 
 // 問い合わせるボタンの動作
 function inquire() {
-  alert("この画像について問い合わせます！");
+  alert("linkから問い合わせができます");
 }
