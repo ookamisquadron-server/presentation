@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>不動産ギャラリー</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ホーム画面 -->
+  <div id="home">
+    <img src="pictures/home.png" alt="ホーム画像" class="home-background">
+    <img src="pictures/homemark.png" alt="ホームマーク" class="home-button" onclick="showGallery()">
+    <div id="logo" class="site-logo">焼津企画</div>
+  </div>
+
+  <!-- ギャラリー画面 -->
+  <div id="gallery" style="display: none;">
+    <button class="back-home-button" onclick="showHome()">ホームに戻る</button>
+    <div class="gallery-grid">
+      <!-- 20個の画像をループで生成 -->
+      <script>
+        for (let i = 0; i < 20; i++) {
+          document.write(`
+            <img src="pictures/image.png" alt="ギャラリー画像" class="gallery-image" onclick="showImage(this)">
+          `);
+        }
+      </script>
+    </div>
+    <!-- 拡大表示エリア -->
+    <div id="preview" class="image-preview" style="display: none;">
+      <button class="close-button" onclick="closePreview()">×</button>
+      <img id="preview-image" src="" alt="拡大画像">
+      <button class="inquiry-button" onclick="inquire()">問い合わせる!</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
