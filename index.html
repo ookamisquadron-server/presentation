@@ -9,8 +9,8 @@
 <body>
   <!-- ホーム画面 -->
   <div id="home">
-    <img src="home.png" alt="ホーム画像" class="home-background">
-    <img src="homemark.png" alt="ホームマーク" class="home-button" onclick="showGallery()">
+    <img src="pictures/home.png" alt="ホーム画像" class="home-background">
+    <img src="pictures/homemark.png" alt="ホームマーク" class="home-button" onclick="showGallery()">
     <div id="logo" class="site-logo">焼津企画</div>
   </div>
 
@@ -18,11 +18,39 @@
   <div id="gallery" style="display: none;">
     <button class="back-home-button" onclick="showHome()">ホームに戻る</button>
     <div class="gallery-grid">
-      <!-- 20個の画像をループで生成 -->
+      <!-- 20個の画像・情報をループで生成 -->
       <script>
+        const photoInfos = [
+          { title: "物件A", desc: "駅から徒歩5分 2LDK" },
+          { title: "物件B", desc: "静かな住宅地 3DK" },
+          { title: "物件C", desc: "リフォーム済み 1LDK" },
+          { title: "物件D", desc: "ペット可 2LDK" },
+          { title: "物件E", desc: "南向き 3LDK" },
+          { title: "物件F", desc: "新築 2DK" },
+          { title: "物件G", desc: "角部屋 3LDK" },
+          { title: "物件H", desc: "駐車場あり 2LDK" },
+          { title: "物件I", desc: "オートロック 1DK" },
+          { title: "物件J", desc: "駅近 1LDK" },
+          { title: "物件K", desc: "広々リビング 3LDK" },
+          { title: "物件L", desc: "最上階 2LDK" },
+          { title: "物件M", desc: "日当り良好 1LDK" },
+          { title: "物件N", desc: "収納充実 2DK" },
+          { title: "物件O", desc: "公園近く 2LDK" },
+          { title: "物件P", desc: "スーパー徒歩圏 3DK" },
+          { title: "物件Q", desc: "築浅 2LDK" },
+          { title: "物件R", desc: "バルコニー付 1LDK" },
+          { title: "物件S", desc: "閑静な住宅街 3LDK" },
+          { title: "物件T", desc: "駅徒歩1分 1DK" }
+        ];
         for (let i = 0; i < 20; i++) {
           document.write(`
-            <img src="image.png" alt="ギャラリー画像" class="gallery-image" onclick="showImage(this)">
+            <div class="gallery-item" onclick="showImage(this)">
+              <img src="pictures/image.png" alt="ギャラリー画像" class="gallery-image">
+              <div class="gallery-info">
+                <div class="gallery-title">${photoInfos[i].title}</div>
+                <div class="gallery-desc">${photoInfos[i].desc}</div>
+              </div>
+            </div>
           `);
         }
       </script>
@@ -30,8 +58,11 @@
     <!-- 拡大表示エリア -->
     <div id="preview" class="image-preview" style="display: none;">
       <button class="close-button" onclick="closePreview()">×</button>
-      <img id="preview-image" src="" alt="拡大画像">
-      <button class="inquiry-button" onclick="inquire()">問い合わせる!</button>
+      <div class="preview-image-container">
+        <img id="preview-image" src="" alt="拡大画像">
+        <div id="preview-info" class="preview-info"></div>
+        <button class="inquiry-button" onclick="inquire()">問い合わせる!</button>
+      </div>
     </div>
   </div>
 
