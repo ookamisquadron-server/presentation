@@ -1,30 +1,33 @@
-// ホーム画面を表示する
 function showHome() {
   document.getElementById("gallery").style.display = "none";
   document.getElementById("home").style.display = "block";
 }
 
-// ギャラリーを表示する
 function showGallery() {
   document.getElementById("home").style.display = "none";
   document.getElementById("gallery").style.display = "block";
 }
 
-// 画像を拡大表示する
-function showImage(imageElement) {
+// ギャラリーでクリックされた画像を画面いっぱい表示
+function showImage(itemElement) {
+  const imgEl = itemElement.querySelector('.gallery-image');
+  const title = itemElement.querySelector('.gallery-title').textContent;
+  const desc = itemElement.querySelector('.gallery-desc').textContent;
+
   const preview = document.getElementById("preview");
   const previewImage = document.getElementById("preview-image");
-  previewImage.src = imageElement.src;
+  const previewInfo = document.getElementById("preview-info");
+
+  previewImage.src = imgEl.src;
+  previewInfo.innerHTML = `<strong>${title}</strong><br>${desc}`;
   preview.style.display = "flex";
 }
 
-// 拡大表示を閉じる
 function closePreview() {
   const preview = document.getElementById("preview");
   preview.style.display = "none";
 }
 
-// 問い合わせるボタンの動作
 function inquire() {
-  alert("linkから問い合わせができます");
+  alert("この画像について問い合わせます！");
 }
